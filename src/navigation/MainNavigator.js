@@ -8,9 +8,9 @@ import RecipeBookScreen from '../screens/Main/RecipeBookScreen';
 
 export const MainNavigator = createMaterialTopTabNavigator(
 	{
-		RecipeBook: RecipeBookScreen,
-		BarcodeReader: BarcodeReaderScreen,
-		Shelf: ShelfScreen,
+		RecipeBook: { screen: RecipeBookScreen },
+		BarcodeReader: { screen: BarcodeReaderScreen },
+		Shelf: { screen: ShelfScreen }
 	},
 	{
 		initialRouteName: 'BarcodeReader',

@@ -5,21 +5,15 @@ import { withNavigationFocus } from 'react-navigation';
 class RecipeBookScreen extends React.Component {
 
     renderScreen = () => {
-        const isFocused = this.props.navigation.isFocused();
-
-        if (isFocused) {
-            return null;
-        } else if (isFocused) {
-            return (
-                <Text>RecipeBookScreen</Text>
-            );
-        }
+        return (
+            <Text>RecipeBookScreen</Text>
+        );
     }
 
     render () {
         return(
             <View style={styles.container}>
-                {this.renderScreen()}
+                 {this.renderScreen()}
             </View>
         );
     }

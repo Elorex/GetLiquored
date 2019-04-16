@@ -5,7 +5,7 @@ import DrinkItem from './DrinkItem';
 
 const drinkList = props => {
 
-    let drinksOutput = props.upc.map((upcNumber) => {
+    let drinksOutput = props.drinks.map((upcNumber) => {
         return (
             <DrinkItem
                 key={upcNumber.toString()}
