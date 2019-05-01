@@ -2,16 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 
+import { database } from '../../models/GLDatabase';
 import DrinkList from '../components/DrinkList';
 
 class ShelfScreen extends React.Component {
-
+    
     state = {
         scannedBarcodeList: [],
         api: '',
-        failedFetchingFromRemote: ''
+        failedFetchingFromRemote: '',
     };
-
+    
     // Reset our navigation param when we are done loading the screen
     // This is so we we don't keep sending the same upc if a new one isn't scanned
     didFocusSubscription = this.props.navigation.addListener(
@@ -44,13 +45,18 @@ class ShelfScreen extends React.Component {
 
     // Load the drink into the local database
     loadDrinkToLocal(drink) {
-        JSON.stringify(drink);
         this.state.scannedBarcodeList.push(drink);
     }
 
     // Get our drinks 
-    getDrinksFromLocal() {
+    async getDrinksFromLocal() {
+        //Create a new db if we don't have one
 
+        //Open the db
+        await database.openDB();
+        //database.closeDB();
+        await database.createTestData();
+        await database.getTestData();
     }
 
     // Check if we failed to get a drink
@@ -65,6 +71,7 @@ class ShelfScreen extends React.Component {
     }
 
     renderScreen(){
+        
         // Check if an item was just scanned
         this.newScanCheck();
 
